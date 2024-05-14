@@ -1,0 +1,55 @@
+id,region,state,city,market_code
+1,Northeast,New York,New York,Mark001
+2,South,Texas,Houston,Mark002
+3,West,California,San Francisco,Mark003
+4,West,California,Los Angeles,Mark004
+5,Midwest,Illinois,Chicago,Mark005
+6,South,Texas,Dallas,Mark006
+7,Northeast,Pennsylvania,Philadelphia,Mark007
+8,West,Nevada,Las Vegas,Mark008
+9,West,Colorado,Denver,Mark009
+10,West,Washington,Seattle,Mark010
+11,Southeast,Florida,Miami,Mark011
+12,Midwest,Minnesota,Minneapolis,Mark012
+13,Midwest,Montana,Billings,Mark013
+14,South,Tennessee,Knoxville,Mark014
+15,Midwest,Nebraska,Omaha,Mark015
+16,South,Alabama,Birmingham,Mark016
+17,Northeast,Maine,Portland,Mark017
+18,West,Alaska,Anchorage,Mark018
+19,West,Hawaii,Honolulu,Mark019
+20,Southeast,Florida,Orlando,Mark020
+21,Northeast,New York,Albany,Mark021
+22,West,Wyoming,Cheyenne,Mark022
+23,Southeast,Virginia,Richmond,Mark023
+24,Midwest,Michigan,Detroit,Mark024
+25,Midwest,Missouri,St. Louis,Mark025
+26,West,Utah,Salt Lake City,Mark026
+27,West,Oregon,Portland,Mark027
+28,South,Louisiana,New Orleans,Mark028
+29,West,Idaho,Boise,Mark029
+30,West,Arizona,Phoenix,Mark030
+31,West,New Mexico,Albuquerque,Mark031
+32,Southeast,Georgia,Atlanta,Mark032
+33,Southeast,South Carolina,Charleston,Mark033
+34,Southeast,North Carolina,Charlotte,Mark034
+35,Midwest,Ohio,Columbus,Mark035
+36,Southeast,Kentucky,Louisville,Mark036
+37,South,Mississippi,Jackson,Mark037
+38,South,Arkansas,Little Rock,Mark038
+39,South,Oklahoma,Oklahoma City,Mark039
+40,Midwest,Kansas,Wichita,Mark040
+41,Midwest,South Dakota,Sioux Falls,Mark041
+42,Midwest,North Dakota,Fargo,Mark042
+43,Midwest,Iowa,Des Moines,Mark043
+44,Midwest,Wisconsin,Milwaukee,Mark044
+45,Midwest,Indiana,Indianapolis,Mark045
+46,Northeast,West Virginia,Charleston,Mark046
+47,Northeast,Maryland,Baltimore,Mark047
+48,Northeast,Delaware,Wilmington,Mark048
+49,Northeast,New Jersey,Newark,Mark049
+50,Northeast,Connecticut,Hartford,Mark050
+51,Northeast,Rhode Island,Providence,Mark051
+52,Northeast,Massachusetts,Boston,Mark052
+53,Northeast,Vermont,Burlington,Mark053
+54,Northeast,New Hampshire,Manchester,Mark054
