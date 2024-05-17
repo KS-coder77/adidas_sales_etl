@@ -1,0 +1,104 @@
+/* Adidas Sales Data Analysis, US Market, 2020-2021*/
+
+-- Total Revenue 
+SELECT
+ROUND(SUM(total_sales),2)
+FROM sales_transactions
+--Total Revenue $899,902,125.00
+
+--Product with the least revenue 
+SELECT 
+DISTINCT sales_transactions.product_code,
+ROUND(SUM(sales_transactions.total_sales),2) AS product_revenue
+FROM sales_transactions
+GROUP BY sales_transactions.product_code
+ORDER BY product_revenue
+LIMIT 3;
+-- Prod004 (Women's Athletic Footwear), Prod005 (Men's Apparel), Prod003 (Women's Street Footwear)
+
+
+--Product with the highest revenue
+SELECT 
+DISTINCT sales_transactions.product_code, 
+ROUND(SUM(sales_transactions.total_sales), 2) AS product_revenue 
+FROM sales_transactions
+GROUP BY sales_transactions.product_code
+ORDER BY product_revenue DESC
+LIMIT 3;
+-- Prod001 (Men's Street Footwear), Prod006 (Women's apparel) and Prod002 (Men's Athletic Footwear)
+
+--Retailer with the lowest revenue
+SELECT 
+DISTINCT sales_transactions.retailer_code, 
+ROUND(SUM(sales_transactions.total_sales), 2) AS retailer_revenue 
+FROM sales_transactions
+GROUP BY sales_transactions.retailer_code
+ORDER BY retailer_revenue 
+LIMIT 3;
+-- 1197831 (Walmart), 1128298 (Amazon), 1197832 (Kohl's)
+
+--Retailer with the highest revenue
+SELECT 
+DISTINCT sales_transactions.retailer_code, 
+ROUND(SUM(sales_transactions.total_sales), 2) AS retailer_revenue 
+FROM sales_transactions
+GROUP BY sales_transactions.retailer_code
+ORDER BY retailer_revenue DESC
+LIMIT 3;
+-- 1189833 (West Gear), 1185732 (Foot Locker), 1128299 (Sports Direct)
+
+-- Product at West Gear with the highest revenue 
+SELECT 
+DISTINCT sales_transactions.retailer_code, 
+sales_transactions.product_code,
+ROUND(SUM(sales_transactions.total_sales),2) AS WG_highest_rev
+FROM sales_transactions
+WHERE sales_transactions.retailer_code = '1189833' 
+GROUP BY sales_transactions.retailer_code, sales_transactions.product_code
+ORDER BY WG_highest_rev DESC
+LIMIT 3;
+-- Prod001 (Men's Street Footwear), Prod006 (Women's Apparel) and Prod002 (Men's Athletic Footwear)
+
+
+-- Month with the highest revenue 
+SELECT 
+inv_date, 
+strftime('%m', inv_date) AS month,
+ROUND(SUM(sales_transactions.total_sales),2) AS month_revenue 
+FROM sales_transactions
+GROUP BY month
+ORDER BY month_revenue DESC
+-- July 2020 with $95,480,694.00
+-- Month on month revenue difference 
+WITH month AS 
+(SELECT 
+inv_date, 
+strftime('%m', inv_date) AS month,
+ROUND(SUM(sales_transactions.total_sales),2) AS month_revenue
+FROM sales_transactions
+GROUP BY month
+ORDER BY month),
+
+month_lag AS 
+(SELECT 
+sub.month,
+LAG(sub.month_revenue, 1) OVER (ORDER BY sub.month) AS month_revenue_lag
+FROM 
+(SELECT 
+inv_date, 
+strftime('%m', inv_date) AS month,
+ROUND(SUM(sales_transactions.total_sales),2) AS month_revenue
+FROM sales_transactions
+GROUP BY month
+ORDER BY month) AS sub
+) 
+
+SELECT 
+m.month, 
+m.month_revenue,
+COALESCE(ROUND(m.month_revenue - ml.month_revenue_lag,2),0) AS MoM_Revenue_Diff,
+COALESCE(ROUND((m.month_revenue - ml.month_revenue_lag)/ ml.month_revenue_lag,2),0) AS MoM_Revenue_Diff_Pct
+FROM month AS m
+LEFT JOIN month_lag AS ml 
+USING (month)
+ORDER BY month;
